@@ -1,9 +1,9 @@
 import myprosody as mysp
 import pickle
 
-p="Walkers" *Audio file name
-c=r"C:\Users\.......YOUR_NAME........\Desktop\myprosody" *an example of path to directory "myprosody" 
-
+#p="embarrasing moment wt" 
+p="embarrasing moment example"
+c=r"/Users/wtoledo/Documents/wt/toefl/myprosody/myprosody" 
 
 mysp.mysptotal(p,c)
 mysp.myspgend(p,c)
