@@ -10,14 +10,14 @@ from scipy.stats import ttest_ind
 import os
 
 
-def run_praat_file(m, p):
+def run_praat_file(m, p,sound):
     """
     p : path to dataset folder
     m : path to file
 
     returns : objects outputed by the praat script
     """
-    sound = p+"/"+"dataset"+"/"+"audioFiles"+"/"+m+".wav"
+    #sound = p+"/"+"dataset"+"/"+"audioFiles"+"/"+m+".wav"
     sourcerun = p+"/"+"dataset"+"/"+"essen"+"/"+"myspsolution.praat"
     path = p+"/"+"dataset"+"/"+"audioFiles"+"/"
 
@@ -39,99 +39,99 @@ def run_praat_file(m, p):
         print("Try again the sound of the audio was not clear")
 
 
-def myspsyl(m, p):
+def myspsyl(m, p,sound):
     """
     Detect and count number of syllables
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[0])  # will be the integer number 10
     z4 = float(z2[3])  # will be the floating point number 8.3
     print("number_ of_syllables=", z3)
     return z3
 
 
-def mysppaus(m, p):
+def mysppaus(m, p,sound):
     """
     Detect and count number of fillers and pauses
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[1])  # will be the integer number 10
     z4 = float(z2[3])  # will be the floating point number 8.3
     print("number_of_pauses=", z3)
     return z3
 
 
-def myspsr(m, p):
+def myspsr(m, p,sound):
     """
     Measure the rate of speech (speed)
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[2])  # will be the integer number 10
     z4 = float(z2[3])  # will be the floating point number 8.3
     print("rate_of_speech=", z3, "# syllables/sec original duration")
     return z3
 
 
-def myspatc(m, p):
+def myspatc(m, p,sound):
     """
     Measure the articulation (speed)
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[3])  # will be the floating point number 8.3
     print("articulation_rate=", z3, "# syllables/sec speaking duration")
     return z3
 
 
-def myspst(m, p):
+def myspst(m, p,sound):
     """
     Measure speaking time (excl. fillers and pause)
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[4])  # will be the floating point number 8.3
     print("speaking_duration=", z4, "# sec only speaking duration without pauses")
     return z4
 
 
-def myspod(m, p):
+def myspod(m, p,sound):
     """
     Measure total speaking duration (inc. fillers and pauses)
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[5])  # will be the floating point number 8.3
     print("original_duration=", z4, "# sec total speaking duration with pauses")
     return z4
 
 
-def myspbala(m, p):
+def myspbala(m, p,sound):
     """
     Measure ratio between speaking duration and total speaking duration
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[6])  # will be the floating point number 8.3
     print("balance=", z4, "# ratio (speaking duration)/(original duration)")
     return z4
 
 
-def myspf0mean(m, p):
+def myspf0mean(m, p,sound):
     """
     Measure fundamental frequency distribution mean
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[7])  # will be the floating point number 8.3
     print("f0_mean=", z4, "# Hz global mean of fundamental frequency distribution")
     return z4
 
 
-def myspf0sd(m, p):
+def myspf0sd(m, p,sound):
     """
     Measure fundamental frequency distribution SD
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[8])  # will be the floating point number 8.3
     print("f0_SD=", z4,
@@ -139,44 +139,44 @@ def myspf0sd(m, p):
     return z4
 
 
-def myspf0med(m, p):
+def myspf0med(m, p,sound):
     """
     Measure fundamental frequency distribution median
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[3])  # will be the integer number 10
     z4 = float(z2[9])  # will be the floating point number 8.3
     print("f0_MD=", z4, "# Hz global median of fundamental frequency distribution")
     return z4
 
 
-def myspf0min(m, p):
+def myspf0min(m, p,sound):
     """
     Measure fundamental frequency distribution minimum
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[10])  # will be the integer number 10
     z4 = float(z2[10])  # will be the floating point number 8.3
     print("f0_min=", z3, "# Hz global minimum of fundamental frequency distribution")
     return z3
 
 
-def myspf0max(m, p):
+def myspf0max(m, p,sound):
     """
     Measure fundamental frequency distribution maximum
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[11])  # will be the integer number 10
     z4 = float(z2[11])  # will be the floating point number 8.3
     print("f0_max=", z3, "# Hz global maximum of fundamental frequency distribution")
     return z3
 
 
-def myspf0q25(m, p):
+def myspf0q25(m, p,sound):
     """
     Measure 25th quantile fundamental frequency distribution
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[12])  # will be the integer number 10
     z4 = float(z2[11])  # will be the floating point number 8.3
     print("f0_quan25=", z3,
@@ -184,11 +184,11 @@ def myspf0q25(m, p):
     return z3
 
 
-def myspf0q75(m, p):
+def myspf0q75(m, p,sound):
     """
     Measure 75th quantile fundamental frequency distribution
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = int(z2[13])  # will be the integer number 10
     z4 = float(z2[11])  # will be the floating point number 8.3
     print("f0_quan75=", z3,
@@ -196,11 +196,11 @@ def myspf0q75(m, p):
     return z3
 
 
-def mysptotal(m, p):
+def mysptotal(m, p,sound):
     """
     Overview
     """
-    z2 = run_praat_file(m, p)
+    z2 = run_praat_file(m, p,sound)
     z3 = np.array(z2)
     z4 = np.array(z3)[np.newaxis]
     z5 = z4.T
@@ -211,12 +211,12 @@ def mysptotal(m, p):
     return dataset.T
 
 
-def mysppron(m, p):
+def mysppron(m, p,sound):
     """
     Pronunciation posteriori probability score percentage
     """
 
-    sound = p+"/"+"dataset"+"/"+"audioFiles"+"/"+m+".wav"
+    #sound = p+"/"+"dataset"+"/"+"audioFiles"+"/"+m+".wav"
     sourcerun = p+"/"+"dataset"+"/"+"essen"+"/"+"myspsolution.praat"
     path = p+"/"+"dataset"+"/"+"audioFiles"+"/"
     try:
@@ -238,7 +238,7 @@ def mysppron(m, p):
     return
 
 
-def myspgend(m, p):
+def myspgend(m, p,sound):
     """
     Gender recognition and mood of speech
     """
@@ -367,6 +367,7 @@ def myprosody(m, p, sound):
         dataframe = dataframe.values
         array = df55.values
         print("Compared to native speech, here are the prosodic features of your speech:")
+        resultData=[]
         for i in range(25):
             sl0 = dataframe[4:7:1, i+1]
             score = array[0, i]
@@ -375,14 +376,23 @@ def myprosody(m, p, sound):
                 he = 25
                 dfout = "%s:\t %f (%s)" % (nsns[i], he, "% percentile ")
                 print(dfout)
+                res=f"'{nsns[i]}': '{he} (% percentile)'"
+                resultData+=[res]
             elif he >= 25 and he <= 75:
                 dfout = "%s:\t %f (%s)" % (nsns[i], he, "% percentile ")
+                res=f"'{nsns[i]}': '{he} (% percentile)'"
                 print(dfout)
+                resultData+=[res]
+
             else:
                 dfout = "%s:\t (%s)" % (nsns[i], ":Out of Range")
+                res=f"'{nsns[i]}': 'Out of Range'"
                 print(dfout)
+                resultData+=[res]
+
         print("result")
-        print(dfout)
+        print(resultData)
+        return resultData
     except:
         print("Try again the sound of the audio was not clear")
 
@@ -401,101 +411,103 @@ def mysplev(m, p, sound):
         if not sys.warnoptions:
             warnings.simplefilter("ignore")
         #sound = p+"/"+"dataset"+"/"+"audioFiles"+"/"+m+".wav"
-        sourcerun = p+"/"+"dataset"+"/"+"essen"+"/"+"MLTRNL.praat"
-        path = p+"/"+"dataset"+"/"+"audioFiles"+"/"
-        pa1 = p+"/"+"dataset"+"/"+"datanewchi23.csv"
-        pa7 = p+"/"+"dataset"+"/"+"datanewchi45.csv"
-        pa5 = p+"/"+"dataset"+"/"+"datanewchi34.csv"
-        result_array = np.empty((0, 100))
-        ph = sound
-        files = glob.glob(ph)
-        result_array = np.empty((0, 27))
-        try:
-            for soundi in files:
-                objects = run_file(sourcerun, -20, 2, 0.3, "yes",
-                                   soundi, path, 80, 400, 0.01, capture_output=True)
-                # print (objects[0]) # This will print the info from the sound object, and objects[0] is a parselmouth.Sound object
-                # This will print the info from the textgrid object, and objects[1] is a parselmouth.Data object with a TextGrid inside
-                z1 = (objects[1])
-                z3 = z1.strip().split()
-                z2 = np.array([z3])
-                result_array = np.append(result_array, [z3], axis=0)
+    sourcerun = p+"/"+"dataset"+"/"+"essen"+"/"+"MLTRNL.praat"
+    path = p+"/"+"dataset"+"/"+"audioFiles"+"/"
+    pa1 = p+"/"+"dataset"+"/"+"datanewchi23.csv"
+    pa7 = p+"/"+"dataset"+"/"+"datanewchi45.csv"
+    pa5 = p+"/"+"dataset"+"/"+"datanewchi34.csv"
+    result_array = np.empty((0, 100))
+    ph = sound
+    files = glob.glob(ph)
+    result_array = np.empty((0, 27))
+    try:
+        for soundi in files:
+            objects = run_file(sourcerun, -20, 2, 0.3, "yes",
+                                soundi, path, 80, 400, 0.01, capture_output=True)
+            # print (objects[0]) # This will print the info from the sound object, and objects[0] is a parselmouth.Sound object
+            # This will print the info from the textgrid object, and objects[1] is a parselmouth.Data object with a TextGrid inside
+            z1 = (objects[1])
+            z3 = z1.strip().split()
+            z2 = np.array([z3])
+            result_array = np.append(result_array, [z3], axis=0)
 
-            np.savetxt(pa1, result_array, fmt='%s', delimiter=',')
-            # Data and features analysis
-            df = pd.read_csv(pa1, names=['avepauseduratin', 'avelongpause', 'speakingtot', 'avenumberofwords', 'articulationrate', 'inpro', 'f1norm', 'mr', 'q25',
-                                         'q50', 'q75', 'std', 'fmax', 'fmin', 'vowelinx1', 'vowelinx2', 'formantmean', 'formantstd', 'nuofwrds', 'npause', 'ins',
-                                                                      'fillerratio', 'xx', 'xxx', 'totsco', 'xxban', 'speakingrate'], na_values='?')
+        np.savetxt(pa1, result_array, fmt='%s', delimiter=',')
+        # Data and features analysis
+        df = pd.read_csv(pa1, names=['avepauseduratin', 'avelongpause', 'speakingtot', 'avenumberofwords', 'articulationrate', 'inpro', 'f1norm', 'mr', 'q25',
+                                        'q50', 'q75', 'std', 'fmax', 'fmin', 'vowelinx1', 'vowelinx2', 'formantmean', 'formantstd', 'nuofwrds', 'npause', 'ins',
+                                                                    'fillerratio', 'xx', 'xxx', 'totsco', 'xxban', 'speakingrate'], na_values='?')
 
-            scoreMLdataset = df.drop(['xxx', 'xxban'], axis=1)
-            scoreMLdataset.to_csv(pa7, header=False, index=False)
-            newMLdataset = df.drop(['avenumberofwords', 'f1norm', 'inpro', 'q25', 'q75', 'vowelinx1',
-                                    'nuofwrds', 'npause', 'xx', 'totsco', 'xxban', 'speakingrate', 'fillerratio'], axis=1)
-            newMLdataset.to_csv(pa5, header=False, index=False)
-            namess = nms = ['avepauseduratin', 'avelongpause', 'speakingtot', 'articulationrate', 'mr',
-                            'q50', 'std', 'fmax', 'fmin', 'vowelinx2', 'formantmean', 'formantstd', 'ins',
-                            'xxx']
-            df1 = pd.read_csv(pa5,
-                              names=namess)
-            df33 = df1.drop(['xxx'], axis=1)
-            array = df33.values
-            array = np.log(array)
-            x = array[:, 0:13]
+        scoreMLdataset = df.drop(['xxx', 'xxban'], axis=1)
+        scoreMLdataset.to_csv(pa7, header=False, index=False)
+        newMLdataset = df.drop(['avenumberofwords', 'f1norm', 'inpro', 'q25', 'q75', 'vowelinx1',
+                                'nuofwrds', 'npause', 'xx', 'totsco', 'xxban', 'speakingrate', 'fillerratio'], axis=1)
+        newMLdataset.to_csv(pa5, header=False, index=False)
+        namess = nms = ['avepauseduratin', 'avelongpause', 'speakingtot', 'articulationrate', 'mr',
+                        'q50', 'std', 'fmax', 'fmin', 'vowelinx2', 'formantmean', 'formantstd', 'ins',
+                        'xxx']
+        df1 = pd.read_csv(pa5,
+                            names=namess)
+        df33 = df1.drop(['xxx'], axis=1)
+        array = df33.values
+        array = np.log(array)
+        x = array[:, 0:13]
 
-            def myspp(bp, bg):
-                sound = bg+"/"+"dataset"+"/"+"audioFiles"+"/"+bp+".wav"
-                sourcerun = bg+"/"+"dataset"+"/"+"essen"+"/"+"myspsolution.praat"
-                path = bg+"/"+"dataset"+"/"+"audioFiles"+"/"
-                objects = run_file(sourcerun, -20, 2, 0.3, "yes",
-                                   sound, path, 80, 400, 0.01, capture_output=True)
-                # This will print the info from the sound object, and objects[0] is a parselmouth.Sound object
-                print(objects[0])
-                # This will print the info from the textgrid object, and objects[1] is a parselmouth.Data object with a TextGrid inside
-                z1 = str(objects[1])
-                z2 = z1.strip().split()
-                z3 = int(z2[13])  # will be the integer number 10
-                z4 = float(z2[14])  # will be the floating point number 8.3
-                db = binom.rvs(n=10, p=z4, size=10000)
-                a = np.array(db)
-                b = np.mean(a)*100/10
-                return b
+        resultData=[]
+        def myspp(bp, bg):
+            sound = bg+"/"+"dataset"+"/"+"audioFiles"+"/"+bp+".wav"
+            sourcerun = bg+"/"+"dataset"+"/"+"essen"+"/"+"myspsolution.praat"
+            path = bg+"/"+"dataset"+"/"+"audioFiles"+"/"
+            objects = run_file(sourcerun, -20, 2, 0.3, "yes",
+                                sound, path, 80, 400, 0.01, capture_output=True)
+            # This will print the info from the sound object, and objects[0] is a parselmouth.Sound object
+            print(objects[0])
+            resultData+=[objects[0]]
+            # This will print the info from the textgrid object, and objects[1] is a parselmouth.Data object with a TextGrid inside
+            z1 = str(objects[1])
+            z2 = z1.strip().split()
+            z3 = int(z2[13])  # will be the integer number 10
+            z4 = float(z2[14])  # will be the floating point number 8.3
+            db = binom.rvs(n=10, p=z4, size=10000)
+            a = np.array(db)
+            b = np.mean(a)*100/10
+            return b
 
-            bp = m
-            bg = p
-            bi = myspp(bp, bg)
-            if bi < 85:
-                input(
-                    "Try again, unnatural-sounding speech detected. No further result. Press any key to exit.")
-                exit()
+        bp = m
+        bg = p
+        bi = myspp(bp, bg)
+        if bi < 85:
+            input(
+                "Try again, unnatural-sounding speech detected. No further result. Press any key to exit.")
+            exit()
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"CART_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("58% accuracy    ", predictions)
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"CART_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("58% accuracy    ", predictions)
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"KNN_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("65% accuracy    ", predictions)
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"KNN_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("65% accuracy    ", predictions)
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"LDA_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("70% accuracy    ", predictions)
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"LDA_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("70% accuracy    ", predictions)
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"LR_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("67% accuracy    ", predictions)
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"LR_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("67% accuracy    ", predictions)
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"NB_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("64% accuracy    ", predictions)
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"NB_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("64% accuracy    ", predictions)
 
-            filename = p+"/"+"dataset"+"/"+"essen"+"/"+"SVN_model.sav"
-            model = pickle.load(open(filename, 'rb'))
-            predictions = model.predict(x)
-            print("63% accuracy    ", predictions)
-        except:
-            print("Try again the sound of the audio was not clear")
+        filename = p+"/"+"dataset"+"/"+"essen"+"/"+"SVN_model.sav"
+        model = pickle.load(open(filename, 'rb'))
+        predictions = model.predict(x)
+        print("63% accuracy    ", predictions)
+    except:
+        print("Try again the sound of the audio was not clear")
